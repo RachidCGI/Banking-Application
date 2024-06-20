@@ -1,4 +1,4 @@
-package org.bankingapp.controllor;
+package org.bankingapp.controller;
 
 import org.bankingapp.entity.Account;
 import org.bankingapp.exception.AccountNotFoundException;

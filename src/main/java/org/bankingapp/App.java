@@ -1,6 +1,6 @@
 package org.bankingapp;
 
-import org.bankingapp.controllor.BankingOperations;
+import org.bankingapp.controller.BankingOperations;
 import org.bankingapp.helper.BankHelper;
 import org.bankingapp.repository.AccountRepository;
 import org.bankingapp.service.AccountService;

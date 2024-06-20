@@ -1,1 +1,6 @@
+# Ignore les fichiers générés par Maven
 target/
+
+# Ignorer les fichiers de configuration spécifiques à l'IDE
+.idea/
+*.iml

@@ -49,14 +49,11 @@ public class BankingOperations {
         int accountId = helper.getNextIntInput();
         try {
             Account account = accountService.findAccountById(accountId);
-            if (account != null) {
-                System.out.print("Enter the amount to deposit: ");
-                double amount = helper.getNextDoubleInput();
-                accountService.deposit(accountId, amount);
-                System.out.println(amount + " euros have been deposited into your account.");
-            } else {
-                System.out.println("Error: Account not found.");
-            }
+            System.out.print("Enter the amount to deposit: ");
+            double amount = helper.getNextDoubleInput();
+            accountService.deposit(account.getAccountId(), amount);
+            System.out.println(amount + " euros have been deposited into your account.");
+
         } catch (AccountNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -71,15 +68,11 @@ public class BankingOperations {
         int accountId = helper.getNextIntInput();
         try {
             Account account = accountService.findAccountById(accountId);
-            if (account != null) {
-                System.out.print("Enter the amount to withdraw: ");
-                double amount = helper.getNextDoubleInput();
-                accountService.withdraw(accountId, amount);
-                System.out.println(amount + " euros have been withdrawn from your account.");
+            System.out.print("Enter the amount to withdraw: ");
+            double amount = helper.getNextDoubleInput();
+            accountService.withdraw(account.getAccountId(), amount);
+            System.out.println(amount + " euros have been withdrawn from your account.");
 
-            } else {
-                System.out.println("Error: Account not found.");
-            }
         } catch (AccountNotFoundException e) {
             System.out.println(e.getMessage());
         } catch(InsufficientBalanceException e){
@@ -96,13 +89,9 @@ public class BankingOperations {
         int accountId = helper.getNextIntInput();
         try {
             Account account = accountService.findAccountById(accountId);
-            if (account != null) {
-                double balance = accountService.getBalance(accountId);
-                System.out.println("Your balance is " + balance + " euros.");
+            double balance = accountService.getBalance(account.getAccountId());
+            System.out.println("Your balance is " + balance + " euros.");
 
-            } else {
-                System.out.println("Error: Account not found.");
-            }
         } catch (AccountNotFoundException e) {
             System.out.println(e.getMessage());
         }
@@ -116,13 +105,9 @@ public class BankingOperations {
         int accountId = helper.getNextIntInput();
         try {
             Account account = accountService.findAccountById(accountId);
-            if (account != null) {
-                double interest = accountService.calculateInterest(accountId);
-                System.out.println("Interest for this month is " + interest + " euros.");
+            double interest = accountService.calculateInterest(account.getAccountId());
+            System.out.println("Interest for this month is " + interest + " euros.");
 
-            } else {
-                System.out.println("Error: Account not found.");
-            }
         } catch (AccountNotFoundException e) {
             System.out.println(e.getMessage());
         }catch (IllegalArgumentException e){
